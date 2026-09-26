@@ -534,7 +534,7 @@
                         <span class="text-zinc-300">${s.name}</span>
                         <span class="text-neon-orange font-bold">${s.value}%</span>
                     </div>
-                    <div class="h-2 rounded-full bg-black border border-zinc-800 overflow-hidden">
+                    <div class="h-2 rounded-full glass-track overflow-hidden">
                         <div class="h-full rounded-full bg-gradient-to-r from-neon-orange to-neon-glow skill-bar-fill" style="width:0%" data-target="${s.value}"></div>
                     </div>
                 </div>
@@ -613,7 +613,7 @@
                         ${isBot ? '<span class="text-[9px] text-zinc-600">BOT</span>' : ""}
                     </div>
                     ${msg.isEmbed
-                        ? `<div class="bg-black/40 border-l-2 border-neon-orange rounded-r-lg p-3 space-y-0.5">${msg.text}</div>`
+                        ? `<div class="glass-embed border-l-2 border-neon-orange rounded-r-lg p-3 space-y-0.5">${msg.text}</div>`
                         : `<div class="text-zinc-300">${msg.text}</div>`}
                 </div>`;
             container.appendChild(wrap);
