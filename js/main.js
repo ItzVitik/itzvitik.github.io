@@ -934,6 +934,9 @@
         var p = PROJECTS[key];
         if (!p) return false;
         $('#pp-title').textContent = p.title;
+        var typeEl = $('#pp-type'); if (typeEl) typeEl.textContent = p.type;
+        var specCat = $('#pp-spec-cat'); if (specCat) specCat.textContent = p.type;
+        var specYear = $('#pp-spec-year'); if (specYear) specYear.textContent = p.year;
         $('#pp-year').textContent = p.year;
         $('#pp-tagline').textContent = p.tagline;
         var st = $('#pp-status');
@@ -941,7 +944,7 @@
         st.textContent = p.status;
         $('#pp-desc').textContent = p.desc;
         $('#pp-role').textContent = p.role;
-        $('#pp-stack-main').textContent = p.stack.slice(0, 2).join(' + ');
+        $('#pp-stack-main').textContent = p.stack.slice(0, 3).join(' • ');
         $('#pp-url').textContent = 'itzvitik.dev/#/' + p.slug;
 
         var link = $('#pp-link'), ltext = $('#pp-link-text'), licon = $('#pp-link-icon');
@@ -949,7 +952,7 @@
             link.removeAttribute('href'); link.removeAttribute('target');
             link.setAttribute('aria-disabled', 'true');
             link.classList.add('is-disabled');
-            ltext.textContent = p.status === 'Private' ? 'Private project' : 'Closed';
+            ltext.textContent = p.status === 'Private' ? 'Private project' : 'Archived project';
             licon.innerHTML = I.ban;
         } else {
             link.href = p.link; link.target = '_blank';
@@ -966,7 +969,9 @@
         img.src = p.img; img.alt = p.title + ' preview';
         img.style.transform = '';
 
-        $('#pp-list').innerHTML = p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('');
+        $('#pp-list').innerHTML = p.features.map(function (f) {
+            return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>' + esc(f) + '</span></li>';
+        }).join('');
         $('#pp-tags').innerHTML = p.stack.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
 
         var next = ORDER[(ORDER.indexOf(key) + 1) % ORDER.length];
@@ -1052,6 +1057,21 @@
     function initProjectPage() {
         var page = $('#project-page');
         $('#pp-back').addEventListener('click', function () { closeProject(true); });
+        var closeBtn = $('#pp-close');
+        if (closeBtn) closeBtn.addEventListener('click', function () { closeProject(true); });
+        var copyBtn = $('#pp-copy-link');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                var url = window.location.href;
+                copyText(url);
+                var t = $('#pp-copy-text');
+                if (t) {
+                    var old = t.textContent;
+                    t.textContent = 'Link copied!';
+                    setTimeout(function () { t.textContent = old; }, 1800);
+                }
+            });
+        }
         $('#pp-next').addEventListener('click', function () {
             var k = $('#pp-next').getAttribute('data-next');
             if (k) openProject(k, true, null);

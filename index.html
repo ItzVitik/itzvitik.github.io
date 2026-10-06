@@ -380,58 +380,116 @@
     <!-- FULL-PAGE PROJECT VIEW (deep link: #/slug) -->
     <div id="project-page" data-lenis-prevent aria-hidden="true">
         <div class="pp-top">
-            <button type="button" class="btn btn-small btn-ghost" id="pp-back">
+            <button type="button" class="btn btn-small btn-ghost" id="pp-back" aria-label="Close project view">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 <span>All projects</span>
             </button>
-            <span class="pp-url" id="pp-url">itzvitik.dev/</span>
+            <div class="pp-breadcrumbs">
+                <span class="pp-crumb-root">portfolio</span>
+                <span class="pp-crumb-slash">/</span>
+                <span class="pp-url" id="pp-url">itzvitik.dev/</span>
+            </div>
+            <button type="button" class="pp-close" id="pp-close" aria-label="Close project">
+                <span class="pp-esc-hint">ESC</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
         </div>
 
         <div class="pp-wrap">
-            <div class="pp-meta pp-anim">
-                <span id="pp-year">2026</span>
-                <span id="pp-tagline">Tagline</span>
-                <span id="pp-status" class="st">Live</span>
-            </div>
-            <h1 class="pp-title pp-anim" id="pp-title">Project</h1>
-            <p class="pp-desc pp-anim" id="pp-desc"></p>
+            <header class="pp-hero pp-anim">
+                <div class="pp-badges">
+                    <span class="pp-chip" id="pp-type">Web application</span>
+                    <span class="pp-chip" id="pp-year">2026</span>
+                    <span id="pp-status" class="st">Live</span>
+                </div>
+                <h1 class="pp-title" id="pp-title">Project</h1>
+                <p class="pp-tagline" id="pp-tagline">Tagline</p>
+                <p class="pp-desc" id="pp-desc"></p>
 
-            <div class="pp-actions pp-anim">
-                <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="pp-link">
-                    <span id="pp-link-text">Live</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="pp-link-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </a>
-                <a href="https://github.com/ItzVitik" target="_blank" rel="noopener" class="btn btn-ghost">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-                    <span>Source</span>
-                </a>
-            </div>
+                <div class="pp-actions">
+                    <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="pp-link">
+                        <span id="pp-link-text">Visit live site</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="pp-link-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                    <a href="https://github.com/ItzVitik" target="_blank" rel="noopener" class="btn btn-ghost" id="pp-source">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                        <span>GitHub Profile</span>
+                    </a>
+                    <button type="button" class="btn btn-ghost" id="pp-copy-link" data-magnetic>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span id="pp-copy-text">Share project</span>
+                    </button>
+                </div>
+            </header>
 
-            <dl class="pp-facts pp-anim">
-                <div><dt>Role</dt><dd id="pp-role">Role</dd></div>
-                <div><dt>Main stack</dt><dd id="pp-stack-main">Stack</dd></div>
-            </dl>
+            <div class="pp-specs-card pp-anim">
+                <div class="pp-spec-item">
+                    <span class="pp-spec-label">Role</span>
+                    <strong class="pp-spec-value" id="pp-role">Full-Stack Developer</strong>
+                </div>
+                <div class="pp-spec-item">
+                    <span class="pp-spec-label">Category</span>
+                    <strong class="pp-spec-value" id="pp-spec-cat">Web application</strong>
+                </div>
+                <div class="pp-spec-item">
+                    <span class="pp-spec-label">Timeline</span>
+                    <strong class="pp-spec-value" id="pp-spec-year">2026</strong>
+                </div>
+                <div class="pp-spec-item">
+                    <span class="pp-spec-label">Primary Stack</span>
+                    <strong class="pp-spec-value" id="pp-stack-main">React + Node.js</strong>
+                </div>
+            </div>
 
             <figure class="pp-frame pp-anim">
-                <div class="pp-frame-bar"><i></i><i></i><i></i><span id="pp-frame-url">itzvitik.dev</span></div>
-                <div class="pp-frame-img"><img id="pp-img" alt="" loading="eager"></div>
+                <div class="pp-frame-bar">
+                    <div class="pp-frame-dots" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                    </div>
+                    <div class="pp-frame-address">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pp-lock-icon" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <span id="pp-frame-url">itzvitik.dev</span>
+                    </div>
+                    <div class="pp-frame-actions" aria-hidden="true">
+                        <span class="pp-dot-pulse"></span>
+                    </div>
+                </div>
+                <div class="pp-frame-img">
+                    <img id="pp-img" alt="" loading="eager">
+                </div>
             </figure>
 
-            <div class="pp-cols pp-anim">
-                <div>
-                    <h2 class="pp-h">Highlights</h2>
-                    <ul class="pp-list" id="pp-list"></ul>
+            <div class="pp-details-grid pp-anim">
+                <div class="pp-card pp-highlights-card">
+                    <div class="pp-card-head">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                        <h2 class="pp-h">Key Highlights & Architecture</h2>
+                    </div>
+                    <ul class="pp-feature-list" id="pp-list"></ul>
                 </div>
-                <div>
-                    <h2 class="pp-h">Built with</h2>
-                    <div class="pills" id="pp-tags"></div>
+                <div class="pp-card pp-tech-card">
+                    <div class="pp-card-head">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <h2 class="pp-h">Technologies Used</h2>
+                    </div>
+                    <div class="pills pp-tech-pills" id="pp-tags"></div>
+                    <div class="pp-card-footer">
+                        <span class="pp-foot-note">Built with clean architecture, tested and optimized for speed.</span>
+                    </div>
                 </div>
             </div>
 
-            <button type="button" class="pp-next pp-anim" id="pp-next">
-                <span>Next project</span>
-                <strong id="pp-next-title">Next</strong>
-            </button>
+            <div class="pp-nav-footer pp-anim">
+                <button type="button" class="pp-next-card" id="pp-next">
+                    <div class="pp-next-copy">
+                        <span class="pp-next-sub">Next case study</span>
+                        <strong class="pp-next-title" id="pp-next-title">Next project</strong>
+                    </div>
+                    <div class="pp-next-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
 
