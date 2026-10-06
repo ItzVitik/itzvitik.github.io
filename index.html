@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>ItzVitik - Full-Stack Developer</title>
     <meta name="description" content="ItzVitik is a full-stack developer building web apps, Discord bots and Minecraft server systems.">
-    <meta name="theme-color" content="#0c0b0d">
+    <meta name="theme-color" content="#0a0a0a">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <script>document.documentElement.classList.add('js');</script>
@@ -58,7 +58,6 @@
         <section class="hero" id="home">
             <div class="hero-inner">
                 <div class="status intro">
-                    <span class="dot dot-live"></span>
                     <span>Open to new projects</span>
                 </div>
 
@@ -94,7 +93,7 @@
             </div>
 
             <div class="hero-hint intro" aria-hidden="true">
-                <span>Move your cursor, click the name</span>
+                <span>Move your cursor to interact</span>
                 <i></i>
             </div>
         </section>
@@ -215,15 +214,37 @@
             <div class="wrap">
                 <div class="head">
                     <h2 class="h2" data-split>A bot command, replayed.</h2>
-                    <p class="head-note" data-reveal>A simulated replay of how my Discord automation responds. Real commands and embed structure, just looped for the demo.</p>
+                    <p class="head-note" data-reveal>A simulated replay of how my Discord automation responds. Real slash commands, real-time feedback and structured embeds.</p>
                 </div>
 
                 <div class="chat" data-reveal>
                     <div class="chat-bar">
-                        <i></i><i></i><i></i>
-                        <span>#support-tickets / Nexus Discord Suite</span>
+                        <div class="chat-controls" aria-hidden="true">
+                            <i></i><i></i><i></i>
+                        </div>
+                        <div class="chat-meta">
+                            <span class="chat-channel">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+                                <span>bot-commands</span>
+                            </span>
+                            <span class="chat-divider">/</span>
+                            <span class="chat-title">Logicly Discord Suite</span>
+                        </div>
+                        <div class="chat-badge">
+                            <span class="badge-dot"></span>
+                            <span>Online</span>
+                        </div>
                     </div>
                     <div class="chat-body" id="bot-chat" aria-live="off"></div>
+                    <div class="chat-input-bar" aria-hidden="true">
+                        <div class="chat-input-prefix">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        </div>
+                        <div class="chat-input-field">Message #bot-commands...</div>
+                        <div class="chat-input-actions">
+                            <span class="chip-cmd">/</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

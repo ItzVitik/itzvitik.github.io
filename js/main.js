@@ -89,7 +89,7 @@
             link: ''
         },
         anxious: {
-            slug: 'anxiousbox', title: 'Anxious Box', type: 'Minecraft server', cat: 'plugin', year: '2026',
+            slug: 'anxiousbox', title: 'play.anxiousbox.eu', type: 'Minecraft server', cat: 'plugin', year: '2026',
             status: 'Archived', closed: true,
             tagline: 'A from-scratch ElytraPvP server that peaked at 45 players',
             role: 'Owner',
@@ -129,7 +129,9 @@
         copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
         send: '<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',
         arrow: '<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>',
-        ban: '<circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/>'
+        ban: '<circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/>',
+        bot: '<rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="16" y1="16" x2="16.01" y2="16"/>',
+        box: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>'
     };
     function svg(name, extra) {
         return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"' + (extra || '') + '>' + I[name] + '</svg>';
@@ -344,14 +346,14 @@
             sx += (tx - sx) * 0.08; sy += (ty - sy) * 0.08;
 
             var g = ctx.createRadialGradient(sx, sy, 0, sx, sy, 380);
-            g.addColorStop(0, 'rgba(210,151,126,0.075)');
-            g.addColorStop(1, 'rgba(210,151,126,0)');
+            g.addColorStop(0, 'rgba(255,255,255,0.075)');
+            g.addColorStop(1, 'rgba(255,255,255,0)');
             ctx.fillStyle = g;
             ctx.fillRect(0, 0, W, H);
 
             var off = (window.scrollY * 0.12) % GAP;
             var near = [];
-            ctx.fillStyle = 'rgba(239,231,224,0.085)';
+            ctx.fillStyle = 'rgba(255,255,255,0.085)';
             for (var y = -GAP + off; y < H + GAP; y += GAP) {
                 for (var x = GAP / 2; x < W + GAP; x += GAP) {
                     var dx = x - sx, dy = y - sy;
@@ -365,7 +367,7 @@
             }
             for (var i = 0; i < near.length; i += 3) {
                 var n = near[i + 2], a = 0.12 + n * n * 0.7, s = 3 + n * 5;
-                ctx.fillStyle = 'rgba(210,151,126,' + a.toFixed(3) + ')';
+                ctx.fillStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')';
                 ctx.fillRect(near[i] - s, near[i + 1] - 0.75, s * 2, 1.5);
                 ctx.fillRect(near[i] - 0.75, near[i + 1] - s, 1.5, s * 2);
             }
@@ -388,8 +390,7 @@
         var N = 0, X, Y, VX, VY, HX, HY, DL, S, B;
         var started = false, visible = true, last = 0, t0 = 0, tNow = 0;
         var mouse = { x: -9999, y: -9999, active: false, px: 0, py: 0, speed: 0 };
-        var rings = [];
-        var COLORS = ['rgba(239,231,224,0.96)', 'rgba(232,185,162,0.98)', 'rgba(210,151,126,1)', 'rgba(188,116,86,1)'];
+        var COLORS = ['rgba(240,240,240,0.96)', 'rgba(200,200,200,0.95)', 'rgba(160,160,160,0.9)', 'rgba(120,120,120,0.85)'];
         var TEXT = 'ItzVitik';
         var family = '"Bricolage Grotesque", system-ui, sans-serif';
 
@@ -459,20 +460,6 @@
             for (var i = 0; i < N; i++) ctx.fillRect(HX[i] - size / 2, HY[i] - size / 2, size, size);
         }
 
-        function blast(bx, by) {
-            var R = 280;
-            for (var i = 0; i < N; i++) {
-                var dx = X[i] - bx, dy = Y[i] - by;
-                var d = Math.sqrt(dx * dx + dy * dy) + 1;
-                if (d < R) {
-                    var f = 1 - d / R;
-                    VX[i] += (dx / d) * f * f * 26 + (Math.random() - 0.5) * 3;
-                    VY[i] += (dy / d) * f * f * 26 + (Math.random() - 0.5) * 3;
-                }
-            }
-            rings.push({ x: bx, y: by, t: tNow });
-        }
-
         function frame(now) {
             requestAnimationFrame(frame);
             if (!visible || !started) return;
@@ -518,13 +505,6 @@
                     if (B[j] === b) { var s = S[j]; ctx.fillRect(X[j] - s / 2, Y[j] - s / 2, s, s); }
                 }
             }
-            for (var r = rings.length - 1; r >= 0; r--) {
-                var age = tNow - rings[r].t;
-                if (age > 1.1) { rings.splice(r, 1); continue; }
-                ctx.strokeStyle = 'rgba(210,151,126,' + ((1 - age / 1.1) * 0.35).toFixed(3) + ')';
-                ctx.lineWidth = 1.5;
-                ctx.beginPath(); ctx.arc(rings[r].x, rings[r].y, age * 420, 0, Math.PI * 2); ctx.stroke();
-            }
         }
 
         function toLocal(e) {
@@ -540,9 +520,18 @@
         cv.addEventListener('pointerdown', function (e) {
             if (!started || RM) return;
             var p = toLocal(e);
-            blast(p.x, p.y);
+            // gentle nudge instead of blast
+            var R = 120;
+            for (var i = 0; i < N; i++) {
+                var dx = X[i] - p.x, dy = Y[i] - p.y;
+                var d = Math.sqrt(dx * dx + dy * dy) + 1;
+                if (d < R) {
+                    var f = 1 - d / R;
+                    VX[i] += (dx / d) * f * 4 + (Math.random() - 0.5) * 1.5;
+                    VY[i] += (dy / d) * f * 4 + (Math.random() - 0.5) * 1.5;
+                }
+            }
         });
-        cv.setAttribute('data-cursor-label', 'Boom');
 
         if (typeof IntersectionObserver !== 'undefined') {
             new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }, { threshold: 0 }).observe(wrap);
@@ -743,21 +732,21 @@
             for (var l = 1; l <= levels; l++) {
                 var r = radius / levels * l;
                 var p = SKILLS.map(function (_, i) { var a = slice * i - Math.PI / 2; return (c + r * Math.cos(a)).toFixed(1) + ',' + (c + r * Math.sin(a)).toFixed(1); }).join(' ');
-                rings += '<polygon points="' + p + '" fill="none" stroke="rgba(239,231,224,0.09)" stroke-width="1"/>';
+                rings += '<polygon points="' + p + '" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>';
             }
             SKILLS.forEach(function (s, i) {
                 var a = slice * i - Math.PI / 2;
-                axes += '<line x1="' + c + '" y1="' + c + '" x2="' + (c + radius * Math.cos(a)).toFixed(1) + '" y2="' + (c + radius * Math.sin(a)).toFixed(1) + '" stroke="rgba(239,231,224,0.09)"/>';
+                axes += '<line x1="' + c + '" y1="' + c + '" x2="' + (c + radius * Math.cos(a)).toFixed(1) + '" y2="' + (c + radius * Math.sin(a)).toFixed(1) + '" stroke="rgba(255,255,255,0.09)"/>';
                 var lx = c + (radius + 24) * Math.cos(a), ly = c + (radius + 24) * Math.sin(a);
                 var anchor = Math.cos(a) > 0.3 ? 'start' : Math.cos(a) < -0.3 ? 'end' : 'middle';
                 labels += '<text class="radar-label" x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" fill="#a69d97" font-size="11.5" font-family="JetBrains Mono, monospace" text-anchor="' + anchor + '" dominant-baseline="middle">' + esc(s.name) + '</text>';
                 var rr = radius * s.value / 100;
                 var x = c + rr * Math.cos(a), y = c + rr * Math.sin(a);
                 pts.push(x.toFixed(1) + ',' + y.toFixed(1));
-                dots += '<rect x="' + (x - 3.5).toFixed(1) + '" y="' + (y - 3.5).toFixed(1) + '" width="7" height="7" fill="#d2977e" stroke="#131114" stroke-width="1.5" transform="rotate(45 ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')"/>';
+                dots += '<rect x="' + (x - 3.5).toFixed(1) + '" y="' + (y - 3.5).toFixed(1) + '" width="7" height="7" fill="#ffffff" stroke="#111111" stroke-width="1.5" transform="rotate(45 ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')"/>';
             });
             el.innerHTML = '<svg viewBox="0 0 ' + size + ' ' + size + '" role="img" aria-label="Skill radar chart">' + rings + axes +
-                '<g class="radar-data"><polygon points="' + pts.join(' ') + '" fill="rgba(210,151,126,0.24)" stroke="#d2977e" stroke-width="2" stroke-linejoin="round"/>' + dots + '</g>' + labels + '</svg>';
+                '<g class="radar-data"><polygon points="' + pts.join(' ') + '" fill="rgba(255,255,255,0.18)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>' + dots + '</g>' + labels + '</svg>';
 
             if (!RM) {
                 var g = $('.radar-data', el);
@@ -1089,19 +1078,60 @@
     function initDemo() {
         var box = $('#bot-chat');
         if (!box) return;
+
+        function getDemoTime() {
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+        }
+
         var SCRIPTS = [
-            [
-                { you: '/ticket create category:Support' },
-                { bot: { icon: 'ticket', title: 'Ticket #482 opened', lines: [['Category', 'Support'], ['Assigned to', 'on-call staff']] } }
-            ],
-            [
-                { you: '/warn user:@Gribbles reason:Spam in #general' },
-                { bot: { icon: 'alert', title: 'Warning logged', lines: [['User', '@Gribbles'], ['Strikes', '1 / 3']] } }
-            ],
-            [
-                { you: '/play query:lofi beats to code to' },
-                { bot: { icon: 'music', title: 'Now playing', lines: [['Track', 'lofi beats to code to'], ['Queue', '3 songs']] } }
-            ]
+            {
+                cmd: { name: 'ticket', args: [['category', 'Store Support'], ['priority', 'High']] },
+                bot: {
+                    icon: 'ticket',
+                    title: 'Ticket #1042 opened',
+                    desc: 'Customer inquiry logged and assigned to on-call support queue.',
+                    fields: [
+                        ['Category', 'Store Support'],
+                        ['Priority', 'High'],
+                        ['Assigned To', '@ItzVitik'],
+                        ['Channel', '#ticket-1042']
+                    ],
+                    footer: 'Logicly Discord Suite • Response: 24ms'
+                }
+            },
+            {
+                cmd: { name: 'store restock', args: [['item', 'Minecraft-Keys'], ['amount', '+50']] },
+                bot: {
+                    icon: 'box',
+                    title: 'Inventory Synchronized',
+                    desc: 'Digital storefront stock updated and published live.',
+                    fields: [
+                        ['Item', 'Global Keys'],
+                        ['Added', '+50 units'],
+                        ['Store URL', 'logicly.space'],
+                        ['Status', 'Live in catalog']
+                    ],
+                    footer: 'Logicly REST Gateway • 200 OK'
+                }
+            },
+            {
+                cmd: { name: 'link', args: [['user', '@Customer'], ['order_id', 'ORD-8821']] },
+                bot: {
+                    icon: 'check',
+                    title: 'Account Linked Successfully',
+                    desc: 'Discord user verified with web storefront profile.',
+                    fields: [
+                        ['Discord User', '@Customer'],
+                        ['Order ID', 'ORD-8821'],
+                        ['Role Added', '@Verified Buyer'],
+                        ['Sync State', 'PostgreSQL Live']
+                    ],
+                    footer: 'Database Cluster • Synced in 18ms'
+                }
+            }
         ];
 
         var running = false, timer = null, idx = 0;
@@ -1111,18 +1141,67 @@
             d.className = 'msg';
             d.innerHTML = html;
             box.appendChild(d);
-            if (!RM) gsap.from(d, { opacity: 0, y: 12, duration: 0.45, ease: 'power2.out' });
+            if (!RM) gsap.from(d, { opacity: 0, y: 14, duration: 0.45, ease: 'power2.out' });
             return d;
         }
-        function userMsg(text) {
-            return add('<div class="avatar">Y</div><div class="msg-main"><div class="msg-name">you</div><div class="msg-text">' + esc(text) + '</div></div>');
+
+        function userMsg(cmd) {
+            var argsHtml = cmd.args.map(function (a) {
+                return '<span class="cmd-arg">' + esc(a[0]) + ': <b>' + esc(a[1]) + '</b></span>';
+            }).join(' ');
+            return add(
+                '<div class="avatar user-avatar" title="You"></div>' +
+                '<div class="msg-main">' +
+                    '<div class="msg-head">' +
+                        '<span class="msg-author">you</span>' +
+                        '<span class="msg-tag">USER</span>' +
+                        '<span class="msg-time">Today at ' + getDemoTime() + '</span>' +
+                    '</div>' +
+                    '<div class="cmd-box">' +
+                        '<span class="cmd-name"><span class="cmd-slash">/</span>' + esc(cmd.name) + '</span> ' +
+                        argsHtml +
+                    '</div>' +
+                '</div>'
+            );
         }
+
         function typingMsg() {
-            return add('<div class="avatar bot">N</div><div class="msg-main"><div class="msg-name bot">Nexus <small>BOT</small></div><div class="typing"><span></span><span></span><span></span></div></div>');
+            return add(
+                '<div class="avatar bot">' + svg('bot') + '</div>' +
+                '<div class="msg-main">' +
+                    '<div class="msg-head">' +
+                        '<span class="msg-author">Logicly Bot</span>' +
+                        '<span class="msg-tag bot-tag">APP</span>' +
+                        '<span class="msg-time">Today at ' + getDemoTime() + '</span>' +
+                    '</div>' +
+                    '<div class="typing-wrap">' +
+                        '<span>Logicly Bot is typing</span>' +
+                        '<div class="typing-dots"><span></span><span></span><span></span></div>' +
+                    '</div>' +
+                '</div>'
+            );
         }
+
         function botMsg(b) {
-            return add('<div class="avatar bot">N</div><div class="msg-main"><div class="msg-name bot">Nexus <small>BOT</small></div><div class="embed"><div class="embed-title">' + svg('' + b.icon) + esc(b.title) + '</div>' +
-                b.lines.map(function (l) { return '<div class="embed-line">' + esc(l[0]) + ': <b>' + esc(l[1]) + '</b></div>'; }).join('') + '</div></div>');
+            var fieldsHtml = b.fields.map(function (f) {
+                return '<div class="embed-field"><span class="embed-field-k">' + esc(f[0]) + '</span><span class="embed-field-v">' + esc(f[1]) + '</span></div>';
+            }).join('');
+            return add(
+                '<div class="avatar bot">' + svg('bot') + '</div>' +
+                '<div class="msg-main">' +
+                    '<div class="msg-head">' +
+                        '<span class="msg-author">Logicly Bot</span>' +
+                        '<span class="msg-tag bot-tag">APP</span>' +
+                        '<span class="msg-time">Today at ' + getDemoTime() + '</span>' +
+                    '</div>' +
+                    '<div class="embed">' +
+                        '<div class="embed-head">' + svg(b.icon) + '<span>' + esc(b.title) + '</span></div>' +
+                        '<div class="embed-desc">' + esc(b.desc) + '</div>' +
+                        '<div class="embed-grid">' + fieldsHtml + '</div>' +
+                        '<div class="embed-foot">' + svg('check', ' style="width:12px;height:12px"') + '<span>' + esc(b.footer) + '</span></div>' +
+                    '</div>' +
+                '</div>'
+            );
         }
 
         function play() {
@@ -1130,18 +1209,19 @@
             box.innerHTML = '';
             var script = SCRIPTS[idx % SCRIPTS.length];
             var typing = null;
-            userMsg(script[0].you);
+            userMsg(script.cmd);
             timer = setTimeout(function () {
                 if (!running) return;
                 typing = typingMsg();
                 timer = setTimeout(function () {
                     if (!running) return;
                     if (typing) typing.remove();
-                    botMsg(script[1].bot);
-                    timer = setTimeout(function () { idx++; play(); }, 3200);
-                }, 1100);
-            }, 900);
+                    botMsg(script.bot);
+                    timer = setTimeout(function () { idx++; play(); }, 3400);
+                }, 1200);
+            }, 800);
         }
+
         function start() { if (running) return; running = true; play(); }
         function stop() { running = false; clearTimeout(timer); }
 
