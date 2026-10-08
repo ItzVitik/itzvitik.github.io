@@ -11,53 +11,24 @@
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-
+<body data-page="home">
+    <div id="curtain" aria-hidden="true"><span id="curtain-label">Home</span></div>
     <canvas id="bg-grid" aria-hidden="true"></canvas>
     <div id="cursor-ring" aria-hidden="true"><span id="cursor-label"></span></div>
     <div id="cursor-dot" aria-hidden="true"></div>
-
-    <!-- NAV -->
     <header class="nav" id="nav">
-        <a href="#home" class="nav-logo" data-scroll="#home" aria-label="ItzVitik, back to top">
-            <img src="assets/img/skin-head.png" alt="" width="28" height="28">
-            <span>ItzVitik</span>
-        </a>
-        <nav class="nav-links" id="nav-links" aria-label="Main">
-            <span class="nav-pill" aria-hidden="true"></span>
-            <a href="#home" data-scroll="#home" data-spy="home">Home</a>
-            <a href="#about" data-scroll="#about" data-spy="about">About</a>
-            <a href="#skills" data-scroll="#skills" data-spy="skills">Skills</a>
-            <a href="#work" data-scroll="#work" data-spy="work">Work</a>
-            <a href="#experience" data-scroll="#experience" data-spy="experience">Journey</a>
-        </nav>
-        <a href="#contact" class="btn btn-small nav-cta" data-scroll="#contact" data-magnetic>
-            <span>Say hi</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-            <span></span><span></span>
-        </button>
+        <a href="index.html" class="nav-logo" data-pl data-title="Home" aria-label="ItzVitik, home"><img src="assets/img/skin-head.png" alt="" width="28" height="28"><span>ItzVitik</span></a>
+        <nav class="nav-links" id="nav-links" aria-label="Main"><span class="nav-pill" aria-hidden="true"></span><a href="index.html" data-pl data-title="Home" data-spy="home">Home</a><a href="about.html" data-pl data-title="About" data-spy="about">About</a><a href="skills.html" data-pl data-title="Skills" data-spy="skills">Skills</a><a href="work.html" data-pl data-title="Work" data-spy="work">Work</a><a href="journey.html" data-pl data-title="Journey" data-spy="experience">Journey</a></nav>
+        <a href="contact.html" class="btn btn-small nav-cta" data-pl data-title="Contact" data-magnetic><span>Say hi</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
         <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
     </header>
-
-    <div class="menu" id="menu" aria-hidden="true">
-        <nav class="menu-inner" aria-label="Mobile">
-            <a href="#home" data-scroll="#home">Home</a>
-            <a href="#about" data-scroll="#about">About</a>
-            <a href="#skills" data-scroll="#skills">Skills</a>
-            <a href="#work" data-scroll="#work">Work</a>
-            <a href="#experience" data-scroll="#experience">Journey</a>
-            <a href="#contact" data-scroll="#contact">Contact</a>
-        </nav>
-    </div>
-
+    <div class="menu" id="menu" aria-hidden="true"><nav class="menu-inner" aria-label="Mobile"><a href="index.html" data-pl data-title="Home">Home</a><a href="about.html" data-pl data-title="About">About</a><a href="skills.html" data-pl data-title="Skills">Skills</a><a href="work.html" data-pl data-title="Work">Work</a><a href="journey.html" data-pl data-title="Journey">Journey</a><a href="contact.html" data-pl data-title="Contact">Contact</a></nav></div>
     <main id="top">
-
-        <!-- HERO -->
-        <section class="hero" id="home">
+<section class="hero" id="home">
             <div class="hero-inner">
                 <div class="status intro">
+                    <span class="dot dot-live"></span>
                     <span>Open to new projects</span>
                 </div>
 
@@ -79,7 +50,7 @@
                 <p class="hero-lead intro">I build web apps, Discord bots and Minecraft server systems. Started with Skript in 2022, now shipping full-stack projects with clean architecture and details that matter.</p>
 
                 <div class="hero-actions intro">
-                    <a href="#work" class="btn btn-primary" data-scroll="#work" data-magnetic>
+                    <a href="work.html" class="btn btn-primary" data-pl data-title="Work" data-magnetic>
                         <span>See my work</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
                     </a>
@@ -97,274 +68,9 @@
                 <i></i>
             </div>
         </section>
-
-        <!-- ABOUT -->
-        <section class="section" id="about">
-            <div class="wrap about-grid">
-                <div class="about-text">
-                    <h2 class="h2" data-split>I like knowing what happens behind the interface.</h2>
-                    <div class="prose" data-reveal>
-                        <p>Software developer who started with Minecraft server scripting and gradually moved deeper into Java, web development, automation and full-stack systems. Not just making something look good, but making it work properly.</p>
-                        <p>Today I build modern websites, Minecraft plugins, Discord automation, APIs and developer tooling, usually mixing clean UI with practical backend engineering.</p>
-                        <p>My focus is simple: clean architecture, fast experiences, thoughtful details, and code that stays maintainable after the first release.</p>
-                    </div>
-                    <dl class="stats" data-reveal>
-                        <div><dt>Years coding</dt><dd><span data-count="5">5</span>+</dd></div>
-                        <div><dt>Projects built</dt><dd><span data-count="30">30</span>+</dd></div>
-                        <div><dt>Dedication</dt><dd><span data-count="100">100</span>%</dd></div>
-                    </dl>
-                </div>
-
-                <div class="tilt" id="tilt">
-                    <div class="tilt-card" id="tilt-card">
-                        <i class="px px-tl"></i><i class="px px-tr"></i><i class="px px-bl"></i><i class="px px-br"></i>
-                        <div class="skin-stage" id="skin-stage">
-                            <div class="skin-loading" id="skin-loading">
-                                <span class="spinner"></span>
-                                <span>Loading skin</span>
-                            </div>
-                            <canvas id="skin-canvas"></canvas>
-                        </div>
-                        <div class="tilt-foot">
-                            <span>Drag to spin the skin</span>
-                            <span class="tilt-name">ItzVitik</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section class="section" id="skills">
-            <div class="wrap">
-                <div class="head">
-                    <h2 class="h2" data-split>Where the strengths sit.</h2>
-                    <p class="head-note" data-reveal>A quick radar of where I'm strongest right now, plus the numbers for anyone who wants the specifics.</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="radar-card" data-reveal>
-                        <div id="skill-radar" class="radar"></div>
-                    </div>
-                    <div class="bars" id="skill-bars"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT I BUILD -->
-        <section class="section" id="build">
-            <div class="wrap">
-                <div class="head">
-                    <h2 class="h2" data-split>From idea to production.</h2>
-                </div>
-
-                <div class="rows">
-                    <article class="row">
-                        <div class="row-main">
-                            <h3>Web products</h3>
-                            <p>Responsive interfaces, dashboards and full-stack applications with a focus on speed, clarity and maintainability.</p>
-                        </div>
-                        <div class="row-tags"><span>React</span><span>Next.js</span><span>TypeScript</span></div>
-                        <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </article>
-                    <article class="row">
-                        <div class="row-main">
-                            <h3>Automation and bots</h3>
-                            <p>Reliable Discord bots, integrations and background services that remove repetitive work and keep communities moving.</p>
-                        </div>
-                        <div class="row-tags"><span>discord.js</span><span>Node</span><span>Python</span></div>
-                        <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </article>
-                    <article class="row">
-                        <div class="row-main">
-                            <h3>Systems and game tech</h3>
-                            <p>Plugins, APIs, server tooling and performance-minded systems where the details matter as much as the UI.</p>
-                        </div>
-                        <div class="row-tags"><span>Java</span><span>API</span><span>Docker</span><span>Linux</span></div>
-                        <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- MARQUEE -->
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee-line" data-dir="-1"></div>
-            <div class="marquee-line marquee-outline" data-dir="1"></div>
-        </div>
-
-        <!-- WORK -->
-        <section class="section" id="work">
-            <div class="wrap">
-                <div class="head">
-                    <h2 class="h2" data-split>Selected work.</h2>
-                    <div class="filters" id="filters" role="group" aria-label="Filter projects">
-                        <button type="button" class="chip is-on" data-filter="all">All</button>
-                        <button type="button" class="chip" data-filter="web">Web apps</button>
-                        <button type="button" class="chip" data-filter="bot">Bots</button>
-                        <button type="button" class="chip" data-filter="plugin">Servers</button>
-                    </div>
-                </div>
-
-                <div class="work-list" id="work-list"></div>
-            </div>
-        </section>
-
-        <!-- LIVE DEMO -->
-        <section class="section" id="demo">
-            <div class="wrap">
-                <div class="head">
-                    <h2 class="h2" data-split>A bot command, replayed.</h2>
-                    <p class="head-note" data-reveal>A simulated replay of how my Discord automation responds. Real slash commands, real-time feedback and structured embeds.</p>
-                </div>
-
-                <div class="chat" data-reveal>
-                    <div class="chat-bar">
-                        <div class="chat-controls" aria-hidden="true">
-                            <i></i><i></i><i></i>
-                        </div>
-                        <div class="chat-meta">
-                            <span class="chat-channel">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
-                                <span>bot-commands</span>
-                            </span>
-                            <span class="chat-divider">/</span>
-                            <span class="chat-title">Logicly Discord Suite</span>
-                        </div>
-                        <div class="chat-badge">
-                            <span class="badge-dot"></span>
-                            <span>Online</span>
-                        </div>
-                    </div>
-                    <div class="chat-body" id="bot-chat" aria-live="off"></div>
-                    <div class="chat-input-bar" aria-hidden="true">
-                        <div class="chat-input-prefix">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                        </div>
-                        <div class="chat-input-field">Message #bot-commands...</div>
-                        <div class="chat-input-actions">
-                            <span class="chip-cmd">/</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERIENCE -->
-        <section class="section" id="experience">
-            <div class="wrap">
-                <div class="head">
-                    <h2 class="h2" data-split>From Minecraft to full-stack.</h2>
-                    <p class="head-note" data-reveal>How the stack evolved, from server scripting into Java, web development and production-minded engineering.</p>
-                </div>
-
-                <div class="timeline" id="timeline">
-                    <div class="tl-track"><div class="tl-fill" id="tl-fill"></div></div>
-
-                    <article class="tl-item">
-                        <i class="tl-dot"></i>
-                        <div class="tl-year">2026</div>
-                        <div class="tl-body">
-                            <h3>Full-stack engineering and building with intent</h3>
-                            <p>Bringing everything together: polished web products, Java systems, automation, APIs and developer tooling, with a stronger focus on architecture, performance and shipping complete experiences.</p>
-                            <div class="pills"><span>Full-stack</span><span>Java</span><span>TypeScript</span><span>Systems</span></div>
-                        </div>
-                    </article>
-                    <article class="tl-item">
-                        <i class="tl-dot"></i>
-                        <div class="tl-year">2025</div>
-                        <div class="tl-body">
-                            <h3>Strong Java foundations and near-production web work</h3>
-                            <p>Java became a confident part of the toolkit, while web development moved from experimentation toward polished, production-ready interfaces and full-stack projects.</p>
-                            <div class="pills"><span>Java</span><span>TypeScript</span><span>React</span><span>Node.js</span></div>
-                        </div>
-                    </article>
-                    <article class="tl-item">
-                        <i class="tl-dot"></i>
-                        <div class="tl-year">2024</div>
-                        <div class="tl-body">
-                            <h3>Web development and advanced Minecraft plugins</h3>
-                            <p>Started building websites and simultaneously pushed Java much further, creating increasingly advanced Minecraft plugins and backend-style systems.</p>
-                            <div class="pills"><span>Java</span><span>Web development</span><span>APIs</span><span>Minecraft plugins</span></div>
-                        </div>
-                    </article>
-                    <article class="tl-item">
-                        <i class="tl-dot"></i>
-                        <div class="tl-year">2023</div>
-                        <div class="tl-body">
-                            <h3>Advanced Minecraft scripting and first steps in Java</h3>
-                            <p>Moved much deeper into Minecraft scripting while starting Java, learning how to turn server ideas into more structured, scalable systems.</p>
-                            <div class="pills"><span>Skript</span><span>Java</span><span>Server systems</span></div>
-                        </div>
-                    </article>
-                    <article class="tl-item">
-                        <i class="tl-dot"></i>
-                        <div class="tl-year">2022</div>
-                        <div class="tl-body">
-                            <h3>Minecraft scripting and server management</h3>
-                            <p>Started by scripting Minecraft servers, building gameplay systems, and learning the practical side of running and managing a community.</p>
-                            <div class="pills"><span>Minecraft</span><span>Skript</span><span>Server management</span></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="section contact" id="contact">
-            <div class="wrap">
-                <h2 class="h2 h2-xl" data-split>Got something to build?</h2>
-
-                <div class="contact-grid">
-                    <form class="form" id="contact-form" data-reveal novalidate>
-                        <label class="field">
-                            <input type="text" name="name" required placeholder=" " autocomplete="name">
-                            <span>Your name or company</span>
-                        </label>
-                        <label class="field">
-                            <input type="email" name="email" required placeholder=" " autocomplete="email">
-                            <span>Your email</span>
-                        </label>
-                        <label class="field">
-                            <textarea name="message" rows="4" required placeholder=" "></textarea>
-                            <span>What are we building?</span>
-                        </label>
-                        <button type="submit" class="btn btn-primary btn-wide" id="contact-submit" data-magnetic>
-                            <span class="btn-icon" id="contact-submit-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            </span>
-                            <span id="contact-submit-text">Send message</span>
-                        </button>
-                    </form>
-
-                    <div class="links" data-reveal>
-                        <p class="links-note">Open for freelance contracts and full-time opportunities. Click any row to copy it. Usually back to you within a day, Discord tends to be fastest.</p>
-
-                        <div class="copy-row" role="button" tabindex="0" data-copy="smithvitek@gmail.com">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>
-                            <span class="copy-text">smithvitek@gmail.com</span>
-                            <span class="copy-state">Copied</span>
-                        </div>
-                        <div class="copy-row" role="button" tabindex="0" data-copy="https://github.com/ItzVitik">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-                            <span class="copy-text">github.com/ItzVitik</span>
-                            <span class="copy-state">Copied</span>
-                        </div>
-                        <div class="copy-row" role="button" tabindex="0" data-copy="ItzVitik">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.419 2.157-2.419 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.419 2.1569-2.419 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419Z"></path></svg>
-                            <span class="copy-text">ItzVitik on Discord</span>
-                            <span class="copy-state">Copied</span>
-                        </div>
-                        <a class="copy-link" href="https://discord.com/users/1077671766417227816" target="_blank" rel="noopener">
-                            <span>Open my Discord profile</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="section paths-sec" id="paths"><div class="wrap"><h2 class="h2" data-split>Pick a path.</h2><nav class="paths" aria-label="Pages"><a class="path" href="about.html" data-pl data-title="About" data-cursor-label="Open" data-reveal><span class="path-title">About</span><span class="path-desc">Who is behind the code</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="skills.html" data-pl data-title="Skills" data-cursor-label="Open" data-reveal><span class="path-title">Skills</span><span class="path-desc">Strengths, stack and numbers</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="work.html" data-pl data-title="Work" data-cursor-label="Open" data-reveal><span class="path-title">Work</span><span class="path-desc">Web apps, bots and servers</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="journey.html" data-pl data-title="Journey" data-cursor-label="Open" data-reveal><span class="path-title">Journey</span><span class="path-desc">2022 until now</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="contact.html" data-pl data-title="Contact" data-cursor-label="Open" data-reveal><span class="path-title">Contact</span><span class="path-desc">Got something to build?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a></nav></div></section>
 
     </main>
-
     <footer class="footer">
         <div class="wrap footer-in">
             <div><strong>ItzVitik</strong> <span>&copy; <span id="year"></span></span></div>
@@ -373,130 +79,10 @@
             </button>
         </div>
     </footer>
-
-    <!-- Floating image preview for the project list -->
-    <div class="work-preview" id="work-preview" aria-hidden="true"></div>
-
-    <!-- FULL-PAGE PROJECT VIEW (deep link: #/slug) -->
-    <div id="project-page" data-lenis-prevent aria-hidden="true">
-        <div class="pp-top">
-            <button type="button" class="btn btn-small btn-ghost" id="pp-back" aria-label="Close project view">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                <span>All projects</span>
-            </button>
-            <div class="pp-breadcrumbs">
-                <span class="pp-crumb-root">portfolio</span>
-                <span class="pp-crumb-slash">/</span>
-                <span class="pp-url" id="pp-url">itzvitik.dev/</span>
-            </div>
-            <button type="button" class="pp-close" id="pp-close" aria-label="Close project">
-                <span class="pp-esc-hint">ESC</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-        </div>
-
-        <div class="pp-wrap">
-            <header class="pp-hero pp-anim">
-                <div class="pp-badges">
-                    <span class="pp-chip" id="pp-type">Web application</span>
-                    <span class="pp-chip" id="pp-year">2026</span>
-                    <span id="pp-status" class="st">Live</span>
-                </div>
-                <h1 class="pp-title" id="pp-title">Project</h1>
-                <p class="pp-tagline" id="pp-tagline">Tagline</p>
-                <p class="pp-desc" id="pp-desc"></p>
-
-                <div class="pp-actions">
-                    <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="pp-link">
-                        <span id="pp-link-text">Visit live site</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="pp-link-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                    </a>
-                    <a href="https://github.com/ItzVitik" target="_blank" rel="noopener" class="btn btn-ghost" id="pp-source">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-                        <span>GitHub Profile</span>
-                    </a>
-                    <button type="button" class="btn btn-ghost" id="pp-copy-link" data-magnetic>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        <span id="pp-copy-text">Share project</span>
-                    </button>
-                </div>
-            </header>
-
-            <div class="pp-specs-card pp-anim">
-                <div class="pp-spec-item">
-                    <span class="pp-spec-label">Role</span>
-                    <strong class="pp-spec-value" id="pp-role">Full-Stack Developer</strong>
-                </div>
-                <div class="pp-spec-item">
-                    <span class="pp-spec-label">Category</span>
-                    <strong class="pp-spec-value" id="pp-spec-cat">Web application</strong>
-                </div>
-                <div class="pp-spec-item">
-                    <span class="pp-spec-label">Timeline</span>
-                    <strong class="pp-spec-value" id="pp-spec-year">2026</strong>
-                </div>
-                <div class="pp-spec-item">
-                    <span class="pp-spec-label">Primary Stack</span>
-                    <strong class="pp-spec-value" id="pp-stack-main">React + Node.js</strong>
-                </div>
-            </div>
-
-            <figure class="pp-frame pp-anim">
-                <div class="pp-frame-bar">
-                    <div class="pp-frame-dots" aria-hidden="true">
-                        <i></i><i></i><i></i>
-                    </div>
-                    <div class="pp-frame-address">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pp-lock-icon" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        <span id="pp-frame-url">itzvitik.dev</span>
-                    </div>
-                    <div class="pp-frame-actions" aria-hidden="true">
-                        <span class="pp-dot-pulse"></span>
-                    </div>
-                </div>
-                <div class="pp-frame-img">
-                    <img id="pp-img" alt="" loading="eager">
-                </div>
-            </figure>
-
-            <div class="pp-details-grid pp-anim">
-                <div class="pp-card pp-highlights-card">
-                    <div class="pp-card-head">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                        <h2 class="pp-h">Key Highlights & Architecture</h2>
-                    </div>
-                    <ul class="pp-feature-list" id="pp-list"></ul>
-                </div>
-                <div class="pp-card pp-tech-card">
-                    <div class="pp-card-head">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        <h2 class="pp-h">Technologies Used</h2>
-                    </div>
-                    <div class="pills pp-tech-pills" id="pp-tags"></div>
-                    <div class="pp-card-footer">
-                        <span class="pp-foot-note">Built with clean architecture, tested and optimized for speed.</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pp-nav-footer pp-anim">
-                <button type="button" class="pp-next-card" id="pp-next">
-                    <div class="pp-next-copy">
-                        <span class="pp-next-sub">Next case study</span>
-                        <strong class="pp-next-title" id="pp-next-title">Next project</strong>
-                    </div>
-                    <div class="pp-next-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </div>
-
+    <div id="project-page" hidden></div><div class="work-preview" id="work-preview" hidden></div>
     <script src="js/vendor/gsap.min.js"></script>
     <script src="js/vendor/ScrollTrigger.min.js"></script>
     <script src="js/vendor/lenis.min.js"></script>
-    <script defer src="js/vendor/skinview3d.bundle.js"></script>
     <script defer src="js/main.js"></script>
 </body>
 </html>
