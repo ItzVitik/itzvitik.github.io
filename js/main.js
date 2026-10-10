@@ -252,7 +252,6 @@
     if (FINE) {
         var ring = $('#cursor-ring');
         var dot = $('#cursor-dot');
-        var label = $('#cursor-label');
         var cx = window.innerWidth / 2, cy = window.innerHeight / 2, rx = cx, ry = cy, seen = false;
         root.classList.add('has-cursor');
 
@@ -271,16 +270,6 @@
         document.addEventListener('pointerover', function (e) {
             var t = e.target;
             if (!t || !t.closest) return;
-            var lab = t.closest('[data-cursor-label]');
-            if (lab) {
-                label.textContent = lab.getAttribute('data-cursor-label');
-                ring.classList.add('is-label');
-                ring.classList.remove('is-hover');
-                dot.classList.add('is-hidden');
-                return;
-            }
-            ring.classList.remove('is-label');
-            dot.classList.remove('is-hidden');
             ring.classList.toggle('is-hover', !!t.closest('a, button, [role="button"], input, textarea, label'));
         });
     }
@@ -302,6 +291,10 @@
     /* ==========================================================
        Background grid canvas
     ========================================================== */
+    // Shockwaves from clicks on the name, drawn across the whole background (viewport coords)
+    var waves = [];
+    function shockwave(x, y) { waves.push({ x: x, y: y, t: performance.now() }); }
+
     function initGrid() {
         var cv = $('#bg-grid');
         if (!cv) return;
@@ -341,6 +334,18 @@
             ctx.fillStyle = g;
             ctx.fillRect(0, 0, W, H);
 
+            // Expanding rings: radius and fade per wave
+            var now = performance.now(), maxR = Math.hypot(W, H);
+            for (var k = waves.length - 1; k >= 0; k--) {
+                var wv = waves[k], age = (now - wv.t) / 1000;
+                wv.r = age * 1100;
+                wv.a = 1 - age / 1.6;
+                if (wv.a <= 0 || wv.r > maxR + 80) { waves.splice(k, 1); continue; }
+                ctx.strokeStyle = 'rgba(238,238,238,' + (wv.a * 0.3).toFixed(3) + ')';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.arc(wv.x, wv.y, wv.r, 0, Math.PI * 2); ctx.stroke();
+            }
+
             var off = (window.scrollY * 0.12) % GAP;
             var near = [];
             ctx.fillStyle = 'rgba(245,245,245,0.085)';
@@ -348,7 +353,12 @@
                 for (var x = GAP / 2; x < W + GAP; x += GAP) {
                     var dx = x - sx, dy = y - sy;
                     var d2 = dx * dx + dy * dy;
-                    if (d2 < 57600) { near.push(x, y, 1 - Math.sqrt(d2) / 240); }
+                    var n = d2 < 57600 ? 1 - Math.sqrt(d2) / 240 : 0;
+                    for (var w = 0; w < waves.length; w++) {
+                        var band = 1 - Math.abs(Math.hypot(x - waves[w].x, y - waves[w].y) - waves[w].r) / 70;
+                        if (band > 0) n = Math.max(n, band * waves[w].a);
+                    }
+                    if (n > 0) { near.push(x, y, n); }
                     else {
                         ctx.fillRect(x - 3, y - 0.5, 6, 1);
                         ctx.fillRect(x - 0.5, y - 3, 1, 6);
@@ -380,7 +390,6 @@
         var N = 0, X, Y, VX, VY, HX, HY, DL, S, B;
         var started = false, visible = true, last = 0, t0 = 0, tNow = 0;
         var mouse = { x: -9999, y: -9999, active: false, px: 0, py: 0, speed: 0 };
-        var rings = [];
         var COLORS = ['rgba(245,245,245,0.96)', 'rgba(255,255,255,0.98)', 'rgba(238,238,238,1)', 'rgba(170,170,170,1)'];
         var TEXT = 'ItzVitik';
         var family = '"Bricolage Grotesque", system-ui, sans-serif';
@@ -462,7 +471,6 @@
                     VY[i] += (dy / d) * f * f * 26 + (Math.random() - 0.5) * 3;
                 }
             }
-            rings.push({ x: bx, y: by, t: tNow });
         }
 
         function frame(now) {
@@ -510,13 +518,6 @@
                     if (B[j] === b) { var s = S[j]; ctx.fillRect(X[j] - s / 2, Y[j] - s / 2, s, s); }
                 }
             }
-            for (var r = rings.length - 1; r >= 0; r--) {
-                var age = tNow - rings[r].t;
-                if (age > 1.1) { rings.splice(r, 1); continue; }
-                ctx.strokeStyle = 'rgba(238,238,238,' + ((1 - age / 1.1) * 0.35).toFixed(3) + ')';
-                ctx.lineWidth = 1.5;
-                ctx.beginPath(); ctx.arc(rings[r].x, rings[r].y, age * 420, 0, Math.PI * 2); ctx.stroke();
-            }
         }
 
         function toLocal(e) {
@@ -533,8 +534,8 @@
             if (!started || RM) return;
             var p = toLocal(e);
             blast(p.x, p.y);
+            shockwave(e.clientX, e.clientY);
         });
-        cv.setAttribute('data-cursor-label', 'Boom');
 
         if (typeof IntersectionObserver !== 'undefined') {
             new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }, { threshold: 0 }).observe(wrap);
@@ -593,7 +594,6 @@
           .fromTo('.hero .roles', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.2)
           .fromTo('.hero .hero-lead', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.35)
           .fromTo('.hero .hero-actions', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, 1.5)
-          .fromTo('.hero .hero-hint', { opacity: 0 }, { opacity: 1, duration: 1.2 }, 2.1)
           .to(nav, { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out' }, 1.1);
 
         // Role line rolls upward, one line at a time
@@ -852,7 +852,7 @@
         list.innerHTML = ORDER.map(function (k) {
             var p = PROJECTS[k];
             var sc = p.status.toLowerCase();
-            return '<a class="work-row" href="#/' + p.slug + '" data-key="' + k + '" data-cat="' + p.cat + '" data-cursor-label="Open">' +
+            return '<a class="work-row" href="#/' + p.slug + '" data-key="' + k + '" data-cat="' + p.cat + '">' +
                 '<h3>' + esc(p.title) + '</h3>' +
                 '<div class="work-meta"><b>' + esc(p.type) + '</b>' + esc(p.stack.slice(0, 3).join(', ')) + '</div>' +
                 '<div class="work-meta"><b class="st st-' + sc + '">' + esc(p.status) + '</b>' + esc(p.year) + '</div>' +
@@ -1239,7 +1239,7 @@
 
 
     /* ==========================================================
-       Page transitions (curtain) + path index
+       Page transitions (curtain)
     ========================================================== */
     var curtain = $('#curtain'), curLabel = $('#curtain-label');
     function revealCurtain() {
@@ -1270,24 +1270,6 @@
         });
     });
     window.addEventListener('pageshow', function (e) { if (e.persisted && curtain) { gsap.killTweensOf([curtain, curLabel]); curtain.style.visibility = 'hidden'; } });
-
-    $$('.path').forEach(function (r) {
-        var t = $('.path-title', r), txt = t.textContent, raf = 0, CH = '!<>-_/[]{}=+*^?#';
-        r.addEventListener('pointermove', function (e) {
-            var b = r.getBoundingClientRect();
-            r.style.setProperty('--mx', (e.clientX - b.left) + 'px');
-        }, { passive: true });
-        r.addEventListener('pointerenter', function () {
-            if (RM) return;
-            var f = 0; cancelAnimationFrame(raf);
-            (function step() {
-                f++; var out = '';
-                for (var i = 0; i < txt.length; i++) out += (i < f / 2) ? txt[i] : CH.charAt(Math.floor(Math.random() * CH.length));
-                t.textContent = out;
-                if (f / 2 < txt.length) raf = requestAnimationFrame(step); else t.textContent = txt;
-            })();
-        });
-    });
 
     /* ==========================================================
        Boot

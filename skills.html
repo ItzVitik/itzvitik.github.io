@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Skills - ItzVitik</title>
+    <meta name="description" content="ItzVitik is a full-stack developer building web apps, Discord bots and Minecraft server systems.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="skills">
+    <div id="curtain" aria-hidden="true"><span id="curtain-label">Skills</span></div>
+    <canvas id="bg-grid" aria-hidden="true"></canvas>
+    <div id="cursor-ring" aria-hidden="true"></div>
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+        <a href="index.html" class="nav-logo" data-pl data-title="Home" aria-label="ItzVitik, home"><img src="assets/img/skin-head.png" alt="" width="28" height="28"><span>ItzVitik</span></a>
+        <nav class="nav-links" id="nav-links" aria-label="Main"><span class="nav-pill" aria-hidden="true"></span><a href="index.html" data-pl data-title="Home" data-spy="home">Home</a><a href="about.html" data-pl data-title="About" data-spy="about">About</a><a href="skills.html" data-pl data-title="Skills" data-spy="skills">Skills</a><a href="work.html" data-pl data-title="Work" data-spy="work">Work</a><a href="journey.html" data-pl data-title="Journey" data-spy="experience">Journey</a></nav>
+        <a href="contact.html" class="btn btn-small nav-cta" data-pl data-title="Contact" data-magnetic><span>Say hi</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+        <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+    </header>
+    <div class="menu" id="menu" aria-hidden="true"><nav class="menu-inner" aria-label="Mobile"><a href="index.html" data-pl data-title="Home">Home</a><a href="about.html" data-pl data-title="About">About</a><a href="skills.html" data-pl data-title="Skills">Skills</a><a href="work.html" data-pl data-title="Work">Work</a><a href="journey.html" data-pl data-title="Journey">Journey</a><a href="contact.html" data-pl data-title="Contact">Contact</a></nav></div>
+    <main id="top">
+<section class="section page-top" id="skills">
+            <h1 class="sr-only">Skills</h1>
+            <div class="wrap">
+                <div class="head">
+                    <h2 class="h2" data-split>Where the strengths sit.</h2>
+                    <p class="head-note" data-reveal>A quick radar of where I'm strongest right now, plus the numbers for anyone who wants the specifics.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="radar-card" data-reveal>
+                        <div id="skill-radar" class="radar"></div>
+                    </div>
+                    <div class="bars" id="skill-bars"></div>
+                </div>
+            </div>
+        </section>
+<div class="marquee" aria-hidden="true">
+            <div class="marquee-line" data-dir="-1"></div>
+            <div class="marquee-line marquee-outline" data-dir="1"></div>
+        </div>
+<a class="next" href="work.html" data-pl data-title="Work"><span>Next page</span><strong>Work</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+    </main>
+    <footer class="footer">
+        <div class="wrap footer-in">
+            <div><strong>ItzVitik</strong> <span>&copy; <span id="year"></span></span></div>
+            <button type="button" class="to-top" id="to-top" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+            </button>
+        </div>
+    </footer>
+    <div id="project-page" hidden></div><div class="work-preview" id="work-preview" hidden></div>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/vendor/lenis.min.js"></script>
+    <script defer src="js/main.js"></script>
+</body>
+</html>

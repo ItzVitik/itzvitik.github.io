@@ -14,7 +14,7 @@
 <body data-page="home">
     <div id="curtain" aria-hidden="true"><span id="curtain-label">Home</span></div>
     <canvas id="bg-grid" aria-hidden="true"></canvas>
-    <div id="cursor-ring" aria-hidden="true"><span id="cursor-label"></span></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
     <div id="cursor-dot" aria-hidden="true"></div>
     <header class="nav" id="nav">
         <a href="index.html" class="nav-logo" data-pl data-title="Home" aria-label="ItzVitik, home"><img src="assets/img/skin-head.png" alt="" width="28" height="28"><span>ItzVitik</span></a>
@@ -27,10 +27,7 @@
     <main id="top">
 <section class="hero" id="home">
             <div class="hero-inner">
-                <div class="status intro">
-                    <span class="dot dot-live"></span>
-                    <span>Open to new projects</span>
-                </div>
+                <div class="status intro">Open to new projects</div>
 
                 <h1 class="sr-only">ItzVitik</h1>
                 <div class="name-wrap" id="name-wrap">
@@ -50,7 +47,7 @@
                 <p class="hero-lead intro">I build web apps, Discord bots and Minecraft server systems. Started with Skript in 2022, now shipping full-stack projects with clean architecture and details that matter.</p>
 
                 <div class="hero-actions intro">
-                    <a href="work.html" class="btn btn-primary" data-pl data-title="Work" data-magnetic>
+                    <a href="#recent" class="btn btn-primary" data-scroll="#recent" data-magnetic>
                         <span>See my work</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
                     </a>
@@ -62,13 +59,80 @@
                     </button>
                 </div>
             </div>
-
-            <div class="hero-hint intro" aria-hidden="true">
-                <span>Move your cursor to interact</span>
-                <i></i>
+        </section>
+<section class="section" id="intro">
+            <div class="wrap home-intro">
+                <h2 class="h2" data-split>Who is behind the code.</h2>
+                <div>
+                    <div class="prose" data-reveal>
+                        <p>I started out scripting Minecraft servers in 2022 and kept digging deeper: Java plugins, Discord automation, APIs and full-stack web apps.</p>
+                        <p>Today I build things that look clean and hold up in production, with fast interfaces, solid backends and code that stays maintainable after the first release.</p>
+                    </div>
+                    <dl class="stats" data-reveal>
+                        <div><dt>Years coding</dt><dd><span data-count="5">5</span>+</dd></div>
+                        <div><dt>Projects built</dt><dd><span data-count="29">29</span>+</dd></div>
+                    </dl>
+                    <a class="more" href="about.html" data-pl data-title="About" data-reveal><span>More about me</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                </div>
             </div>
         </section>
-<section class="section paths-sec" id="paths"><div class="wrap"><h2 class="h2" data-split>Pick a path.</h2><nav class="paths" aria-label="Pages"><a class="path" href="about.html" data-pl data-title="About" data-cursor-label="Open" data-reveal><span class="path-title">About</span><span class="path-desc">Who is behind the code</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="skills.html" data-pl data-title="Skills" data-cursor-label="Open" data-reveal><span class="path-title">Skills</span><span class="path-desc">Strengths, stack and numbers</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="work.html" data-pl data-title="Work" data-cursor-label="Open" data-reveal><span class="path-title">Work</span><span class="path-desc">Web apps, bots and servers</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="journey.html" data-pl data-title="Journey" data-cursor-label="Open" data-reveal><span class="path-title">Journey</span><span class="path-desc">2022 until now</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a><a class="path" href="contact.html" data-pl data-title="Contact" data-cursor-label="Open" data-reveal><span class="path-title">Contact</span><span class="path-desc">Got something to build?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a></nav></div></section>
+<section class="section" id="what">
+            <div class="wrap">
+                <div class="head">
+                    <h2 class="h2" data-split>What I build.</h2>
+                    <a class="more" href="skills.html" data-pl data-title="Skills" data-reveal><span>Skills and stack</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                </div>
+                <div class="cards">
+                    <article class="card" data-reveal>
+                        <h3>Web products</h3>
+                        <p>Responsive interfaces, dashboards and full-stack apps built for speed and clarity.</p>
+                        <div class="pills"><span>React</span><span>TypeScript</span><span>Node.js</span></div>
+                    </article>
+                    <article class="card" data-reveal>
+                        <h3>Discord bots</h3>
+                        <p>Bots and integrations that automate the boring parts and keep communities running.</p>
+                        <div class="pills"><span>discord.js</span><span>PostgreSQL</span><span>Redis</span></div>
+                    </article>
+                    <article class="card" data-reveal>
+                        <h3>Minecraft systems</h3>
+                        <p>Custom plugins, server cores and tooling where performance matters as much as gameplay.</p>
+                        <div class="pills"><span>Java</span><span>Paper</span><span>Skript</span></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+<section class="section" id="recent">
+            <div class="wrap">
+                <div class="head">
+                    <h2 class="h2" data-split>Recent work.</h2>
+                    <a class="more" href="work.html" data-pl data-title="Work" data-reveal><span>All projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                </div>
+                <div class="work-list" data-reveal>
+                    <a class="work-row" href="work.html#/logiclyweb" data-pl data-title="Work">
+                        <h3>Logicly Web</h3>
+                        <div class="work-meta"><b>Web application</b>Node.js, Express, React</div>
+                        <div class="work-meta"><b class="st st-live">Live</b>2026</div>
+                        <svg class="work-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        <img class="work-thumb" src="assets/img/project-logicly-web.jpg" alt="" loading="lazy" width="1080" height="608">
+                    </a>
+                    <a class="work-row" href="work.html#/logiclydiscordbot" data-pl data-title="Work">
+                        <h3>Logicly Discord Bot</h3>
+                        <div class="work-meta"><b>Discord bot</b>Node.js, Discord.js, PostgreSQL</div>
+                        <div class="work-meta"><b class="st st-private">Private</b>2026</div>
+                        <svg class="work-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        <img class="work-thumb" src="assets/img/project-logicly-bot.jpg" alt="" loading="lazy" width="1080" height="608">
+                    </a>
+                    <a class="work-row" href="work.html#/anxiousbox" data-pl data-title="Work">
+                        <h3>Anxious Box</h3>
+                        <div class="work-meta"><b>Minecraft server</b>Skript, Java, Paper</div>
+                        <div class="work-meta"><b class="st st-archived">Archived</b>2026</div>
+                        <svg class="work-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        <img class="work-thumb" src="assets/img/project-anxious-box.jpg" alt="" loading="lazy" width="1080" height="608">
+                    </a>
+                </div>
+            </div>
+        </section>
+<a class="next" href="contact.html" data-pl data-title="Contact"><span>Got something to build?</span><strong>Contact</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
 
     </main>
     <footer class="footer">
