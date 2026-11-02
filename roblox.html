@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Roblox - ItzVitik</title>
+    <meta name="description" content="ItzVitik builds for Roblox: Luau scripting, game UI and builds in Roblox Studio.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="roblox">
+    <div id="curtain" aria-hidden="true"><span id="curtain-label">Roblox</span></div>
+    <canvas id="bg-grid" aria-hidden="true"></canvas>
+    <div id="cursor-ring" aria-hidden="true"></div>
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+        <a href="index.html" class="nav-logo" data-pl data-title="Home" aria-label="ItzVitik, home"><img src="assets/img/skin-head.png" alt="" width="28" height="28"><span>ItzVitik</span></a>
+        <nav class="nav-links" id="nav-links" aria-label="Main"><span class="nav-pill" aria-hidden="true"></span><a href="index.html" data-pl data-title="Home" data-spy="home">Home</a><a href="about.html" data-pl data-title="About" data-spy="about">About</a><a href="skills.html" data-pl data-title="Skills" data-spy="skills">Skills</a><a href="work.html" data-pl data-title="Work" data-spy="work">Work</a><a href="roblox.html" data-pl data-title="Roblox" data-spy="roblox">Roblox</a><a href="journey.html" data-pl data-title="Journey" data-spy="experience">Journey</a></nav>
+        <a href="contact.html" class="btn btn-small nav-cta" data-pl data-title="Contact" data-magnetic><span>Say hi</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+        <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+    </header>
+    <div class="menu" id="menu" aria-hidden="true"><nav class="menu-inner" aria-label="Mobile"><a href="index.html" data-pl data-title="Home">Home</a><a href="about.html" data-pl data-title="About">About</a><a href="skills.html" data-pl data-title="Skills">Skills</a><a href="work.html" data-pl data-title="Work">Work</a><a href="roblox.html" data-pl data-title="Roblox">Roblox</a><a href="journey.html" data-pl data-title="Journey">Journey</a><a href="contact.html" data-pl data-title="Contact">Contact</a></nav></div>
+    <main id="top">
+<section class="section page-top" id="roblox">
+            <h1 class="sr-only">Roblox</h1>
+            <div class="wrap">
+                <div class="head">
+                    <h2 class="h2" data-split>Roblox Studio, end to end.</h2>
+                    <p class="head-note" data-reveal>Next to the web and Minecraft work, I build for Roblox: the scripts that run the game, the UI players tap on and the worlds they walk through.</p>
+                </div>
+
+                <div class="rows">
+                    <article class="row">
+                        <div>
+                            <h3>Scripting</h3>
+                            <p>Gameplay systems in Luau with a clean client and server split. Remotes checked on the server, saved player data, shops, round loops and tools.</p>
+                        </div>
+                        <div class="row-tags"><span>Luau</span><span>ModuleScripts</span><span>Remotes</span><span>DataStores</span></div>
+                        <span class="row-num" aria-hidden="true">01</span>
+                    </article>
+                    <article class="row">
+                        <div>
+                            <h3>Game UI</h3>
+                            <p>Bold, colorful interfaces built as ScreenGuis that hold up on phone, tablet and PC, with tweened buttons and menus that feel alive.</p>
+                        </div>
+                        <div class="row-tags"><span>ScreenGui</span><span>TweenService</span><span>Mobile-ready</span></div>
+                        <span class="row-num" aria-hidden="true">02</span>
+                    </article>
+                    <article class="row">
+                        <div>
+                            <h3>Building</h3>
+                            <p>Maps, lobbies and props built right in Studio, with care for lighting, scale and how players actually move through the space.</p>
+                        </div>
+                        <div class="row-tags"><span>Parts</span><span>Terrain</span><span>Lighting</span><span>Level design</span></div>
+                        <span class="row-num" aria-hidden="true">03</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+<section class="section" id="ui">
+            <div class="wrap">
+                <div class="head">
+                    <h2 class="h2" data-split>The UI style I build.</h2>
+                    <p class="head-note" data-reveal>Loud colors, chunky shapes and buttons you can read at a glance, made for players, not for screenshots.</p>
+                </div>
+
+                <div class="shots">
+                    <figure class="shot" data-reveal>
+                        <div class="shot-bar"><i></i><span>StarterGui / ShopGui</span></div>
+                        <div class="shot-img"><img src="assets/img/roblox-ui-shop.jpg" alt="Colorful Roblox shop menu with a bundle offer and cash packs" width="800" height="302" loading="lazy" draggable="false"></div>
+                        <figcaption>
+                            <h3>Shop panels</h3>
+                            <p>Tabs, bundles and item cards with clear prices, built to be tapped on a phone as easily as clicked on PC.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="shot" data-reveal>
+                        <div class="shot-bar"><i></i><span>StarterGui / HUD</span></div>
+                        <div class="shot-img"><img src="assets/img/roblox-ui-before-after.jpg" alt="Before and after comparison of a plain Roblox screen and a styled one" width="802" height="364" loading="lazy" draggable="false"></div>
+                        <figcaption>
+                            <h3>Before and after</h3>
+                            <p>Taking a default-looking game and giving it a UI with real personality, without getting in the way of play.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <p class="shots-note" data-reveal>Style references. Artwork belongs to its original creators.</p>
+            </div>
+        </section>
+<section class="section" id="luau">
+            <div class="wrap">
+                <div class="head">
+                    <h2 class="h2" data-split>Server decides, client asks.</h2>
+                    <p class="head-note" data-reveal>A trimmed example of how I wire a shop purchase. The client only sends a request, the server checks everything before money moves.</p>
+                </div>
+
+                <div class="chat code-win" data-reveal>
+                    <div class="chat-bar">
+                        <i></i><i></i><i></i>
+                        <span>ServerScriptService / ShopService.server.lua</span>
+                    </div>
+<pre class="code"><code><span class="k">local</span> ReplicatedStorage = game:<span class="f">GetService</span>(<span class="s">"ReplicatedStorage"</span>)
+<span class="k">local</span> Players = game:<span class="f">GetService</span>(<span class="s">"Players"</span>)
+
+<span class="k">local</span> Items = <span class="f">require</span>(ReplicatedStorage.Shared.Items)
+<span class="k">local</span> Purchase = ReplicatedStorage.Remotes.Purchase
+
+<span class="k">local</span> COOLDOWN = <span class="n">0.5</span>
+<span class="k">local</span> lastBuy = {}
+
+Purchase.OnServerInvoke = <span class="k">function</span>(player, itemId)
+    <span class="c">-- Never trust what the client sends</span>
+    <span class="k">if</span> <span class="f">typeof</span>(itemId) ~= <span class="s">"string"</span> <span class="k">then return false</span>, <span class="s">"Bad request"</span> <span class="k">end</span>
+    <span class="k">local</span> item = Items[itemId]
+    <span class="k">if not</span> item <span class="k">then return false</span>, <span class="s">"Unknown item"</span> <span class="k">end</span>
+
+    <span class="k">local</span> now = os.<span class="f">clock</span>()
+    <span class="k">if</span> (lastBuy[player] <span class="k">or</span> <span class="n">0</span>) + COOLDOWN > now <span class="k">then return false</span>, <span class="s">"Slow down"</span> <span class="k">end</span>
+    lastBuy[player] = now
+
+    <span class="k">local</span> cash = player.leaderstats.Cash
+    <span class="k">if</span> cash.Value &lt; item.price <span class="k">then return false</span>, <span class="s">"Not enough cash"</span> <span class="k">end</span>
+
+    cash.Value -= item.price
+    item.<span class="f">grant</span>(player)
+    <span class="k">return true</span>
+<span class="k">end</span>
+
+Players.PlayerRemoving:<span class="f">Connect</span>(<span class="k">function</span>(player)
+    lastBuy[player] = <span class="k">nil</span>
+<span class="k">end</span>)</code></pre>
+                </div>
+
+                <a class="more code-cta" href="contact.html" data-pl data-title="Contact" data-reveal><span>Got a Roblox game to build?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+            </div>
+        </section>
+<a class="next" href="journey.html" data-pl data-title="Journey"><span>Next page</span><strong>Journey</strong><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+    </main>
+    <footer class="footer">
+        <div class="wrap footer-in">
+            <div><strong>ItzVitik</strong> <span>&copy; <span id="year"></span></span></div>
+            <button type="button" class="to-top" id="to-top" aria-label="Back to top">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+            </button>
+        </div>
+    </footer>
+    <div id="project-page" hidden></div><div class="work-preview" id="work-preview" hidden></div>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/vendor/lenis.min.js"></script>
+    <script defer src="js/main.js"></script>
+</body>
+</html>
