@@ -1276,6 +1276,52 @@
         });
     }
 
+    function initWall() {
+        var wall = $('#rbx-wall');
+        if (!wall) return;
+        var names = wall.getAttribute('data-src').split(/\s+/);
+        var count = Math.min(12, Math.ceil(wall.offsetWidth / (window.innerWidth < 760 ? 142 : 170)) + 1);
+        var html = '';
+        for (var c = 0; c < count; c++) {
+            var shift = (c * 4) % names.length;
+            var set = names.slice(shift).concat(names.slice(0, shift)).map(function (n) {
+                return '<img src="assets/img/roblox/' + n + '-sm.webp" alt="" draggable="false">';
+            }).join('');
+            var dur = 70 + (c * 11) % 30;
+            html += '<div class="rbx-col' + (c % 2 ? ' is-down' : '') + '" style="animation-duration:' + dur + 's;animation-delay:-' + ((c * 17) % dur) + 's">' + set + set + '</div>';
+        }
+        wall.innerHTML = html;
+
+        if (typeof IntersectionObserver !== 'undefined') {
+            new IntersectionObserver(function (en) { wall.classList.toggle('is-paused', !en[0].isIntersecting); }).observe(wall);
+        }
+        if (RM) return;
+        gsap.to('.rbx-hero-in', {
+            yPercent: -12, opacity: 0, ease: 'none',
+            scrollTrigger: { trigger: '.rbx-hero', start: 'top top', end: 'bottom 20%', scrub: true }
+        });
+        if (FINE) {
+            var xTo = gsap.quickTo(wall, 'x', { duration: 1.4, ease: 'power3.out' });
+            var yTo = gsap.quickTo(wall, 'y', { duration: 1.4, ease: 'power3.out' });
+            var spot = { x: wall.offsetWidth / 2, y: wall.offsetHeight / 2 };
+            var paint = function () {
+                wall.style.setProperty('--mx', spot.x.toFixed(1) + 'px');
+                wall.style.setProperty('--my', spot.y.toFixed(1) + 'px');
+            };
+            var sxTo = gsap.quickTo(spot, 'x', { duration: 0.6, ease: 'power3.out', onUpdate: paint });
+            var syTo = gsap.quickTo(spot, 'y', { duration: 0.6, ease: 'power3.out', onUpdate: paint });
+            paint();
+            window.addEventListener('pointermove', function (e) {
+                xTo((e.clientX / window.innerWidth - 0.5) * -30);
+                yTo((e.clientY / window.innerHeight - 0.5) * -20);
+                var r = wall.getBoundingClientRect();
+                if (r.bottom < 0) return;
+                sxTo(e.clientX - r.left);
+                syTo(e.clientY - r.top);
+            }, { passive: true });
+        }
+    }
+
     function initShop() {
         var game = $('#rbx-game');
         if (!game) return;
@@ -1636,7 +1682,7 @@
         root.classList.add('is-gravity', 'is-locked');
         if (lenis) lenis.stop();
 
-        var SEL = '.nav, main h2, main h3, main p, main .btn, .card, .shot, .chat, .rbx-win, .rbx-out-win, .row-tags span, .pills span, .stats > div, ' +
+        var SEL = '.nav, .rbx-hero-title, main h2, main h3, main p, main .btn, .card, .shot, .chat, .rbx-win, .rbx-out-win, .row-tags span, .pills span, .stats > div, ' +
             '.more, .chip, .tl-year, .tl-dot, .work-meta, .work-arrow, .status, .name-wrap, .roles, .bar, .radar-card, .copy-row, .field, .next strong, .next svg, .gh, .row-num, .head-note, .tilt';
         var W = window.innerWidth, H = window.innerHeight, bodies = [];
         $$(SEL).forEach(function (el) {
@@ -1836,6 +1882,7 @@
     initTilt();
     initProjectPage();
     initSkin();
+    initWall();
     initShop();
     initScramble();
     initSpotlight();
